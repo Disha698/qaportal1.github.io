@@ -52,6 +52,44 @@ var generateUniqueID=function(){return"v2-"+Date.now()+"-"+(Math.floor(Math.rand
               </div>
             </div>
           </div>
+<h1>AJAX Example</h1>
+    <p id="output"></p>
+    <button onclick="loadData()">Load Data</button>
+    <script>
+        function loadData() {
+            var loadTime = 1800; // initial load time is 1.8 seconds
+            var randomNum = Math.floor(Math.random() * 100) + 1; // generate random number between 1 and 100
+            var url = "https://jsonplaceholder.typicode.com/posts/" + randomNum; // construct URL with random number
+            $("#output").html("Loading data...");
+            setTimeout(function () {
+                $.ajax({
+                    url: url,
+                    method: "GET",
+                    success: function (response) {
+                        $("#output").html(response.title);
+                    },
+                    error: function () {
+                        $("#output").html("Error loading data");
+                    }
+                });
+            }, loadTime);
+            // loadTime += 1000;
+            // $.ajax({
+            //     url: url,
+            //     method: "GET",
+            //     success: function (response) {
+            //         $("#output").html(response.title);
+            //     },
+            //     error: function () {
+            //         $("#output").html("Error loading data");
+            //     }
+            // });
+        }
+        setInterval(loadData, 2500); // call loadData every 2.5 seconds
+        setInterval(function () {
+            location.reload();
+        }, 20000); // reload page every 20 seconds
+    </script>
 
             <li class="blog-media-carousel-slide cl-carousel-slide">
               <article class="blog-media-carousel-card">
