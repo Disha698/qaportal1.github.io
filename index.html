@@ -15,7 +15,7 @@ var generateUniqueID=function(){return"v2-"+Date.now()+"-"+(Math.floor(Math.rand
          catch(e){
            console.log('error');  
          }
-      }
+      
       window.RProfiler ? _rumMarkComplete() : window.addEventListener("GlimpseLoaded", _rumMarkComplete)
       window.addEventListener('unload', _rumMarkComplete());
 	   
